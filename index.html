@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="favicon.jpg">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CV Mohamed Ali Khaldi - Marketing Digital</title>
+
+  <!-- Polices Google -->
+  
+  <!-- SEO -->
+  <meta name="description" content="Portfolio de Mohamed Ali Khaldi — Alternant en Marketing Digital & Performance Commerciale. Acquisition digitale, data, paid media, reporting.">
+  <meta name="theme-color" content="#2A5C82">
+  <meta name="robots" content="index,follow">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Portfolio — Mohamed Ali Khaldi">
+  <meta property="og:title" content="Mohamed Ali Khaldi — Portfolio">
+  <meta property="og:description" content="Portfolio de Mohamed Ali Khaldi — Alternant en Marketing Digital & Performance Commerciale. Acquisition digitale, data, paid media, reporting.">
+  <meta property="og:image" content="og-image.jpg">
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mohamed Ali Khaldi — Portfolio">
+  <meta name="twitter:description" content="Portfolio de Mohamed Ali Khaldi — Alternant en Marketing Digital & Performance Commerciale. Acquisition digitale, data, paid media, reporting.">
+  <meta name="twitter:image" content="og-image.jpg">
+
+  <!-- Perf: preconnect fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- Icônes Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+:root {
+  --primary-color: #2A5C82;
+  --secondary-color: #FF6B35;
+  --accent-color: #4ECDC4;
+  --dark-color: #292F36;
+  --light-color: #F7FFF7;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.6;
+  color: var(--dark-color);
+  background-color: #f9f9f9;
+  padding: 20px;
+}
+
+/* Animation d'entrée du conteneur */
+.cv-container {
+  max-width: 800px;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.8s forwards 0.2s;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Header */
+.header {
+  background: linear-gradient(135deg, var(--primary-color) 0%, #1E3A5F 100%);
+  color: white;
+  padding: 30px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+  animation: pulse 15s infinite alternate;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.05); }
+}
+
+.header h1 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 2.2rem;
+  margin-bottom: 5px;
+  font-weight: 700;
+  position: relative;
+  z-index: 1;
+  animation: textGlow 3s infinite alternate;
+}
+
+@keyframes textGlow {
+  from { text-shadow: 0 0 5px rgba(255,255,255,0.3); }
+  to { text-shadow: 0 0 15px rgba(255,255,255,0.6); }
+}
+
+.header h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 400;
+  opacity: 0.92;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Contacts */
+.contact-info {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  padding: 8px 14px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 30px;
+  backdrop-filter: blur(5px);
+}
+
+.contact-item:hover {
+  background: rgba(255,255,255,0.2);
+  transform: translateY(-3px);
+}
+
+.contact-item i {
+  margin-right: 8px;
+  color: var(--secondary-color);
+}
+
+/* Sections (révélation au scroll via JS) */
+.section,
+.sectioninteret {
+  padding: 25px 30px;
+  border-bottom: 1px solid #eee;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  will-change: opacity, transform;
+}
+
+.section.is-visible,
+.sectioninteret.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-title {
+  font-family: 'Poppins', sans-serif;
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin-bottom: 15px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, var(--primary-color), rgba(0,0,0,0));
+  margin-left: 15px;
+}
+
+.section-title i {
+  margin-right: 10px;
+  color: var(--secondary-color);
+}
+
+/* Timeline */
+.timeline-item {
+  display: flex;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 20px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background: var(--accent-color);
+  z-index: 1;
+}
+
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 16px;
+  bottom: -25px;
+  width: 2px;
+  background: var(--accent-color);
+}
+
+.timeline-item:last-child::after {
+  display: none;
+}
+
+.timeline-date {
+  min-width: 140px;
+  font-weight: 600;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-date {
+  color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-content h3 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.1rem;
+  color: var(--dark-color);
+  margin-bottom: 5px;
+  transition: all 0.3s ease;
+}
+
+.timeline-item:hover .timeline-content h3 {
+  color: var(--primary-color);
+}
+
+.timeline-content h4 {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 8px;
+  font-weight: 600;
+}
+
+.timeline-content ul {
+  padding-left: 20px;
+  font-size: 0.9rem;
+}
+
+/* Compétences */
+.skills-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.skill-badge {
+  background: #f0f0f0;
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  color: #333;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.skill-badge::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  transition: left 0.5s ease;
+}
+
+.skill-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.08);
+}
+
+.skill-badge:hover::before {
+  left: 100%;
+}
+
+.skill-badge.primary {
+  background: var(--primary-color);
+  color: white;
+}
+
+/* Centres d'intérêt */
+.sectioninteret {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.interests-container {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.interest-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 90px;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.interest-icon {
+  width: 52px;
+  height: 52px;
+  background: var(--accent-color);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 8px;
+  color: white;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.interest-item:hover .interest-icon {
+  transform: rotate(12deg) scale(1.08);
+  background: var(--secondary-color);
+}
+
+.interest-name {
+  font-size: 0.8rem;
+  color: var(--dark-color);
+}
+
+/* Photo profil */
+.photo-profil {
+  margin: 0 auto 15px;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid white;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  position: relative;
+  z-index: 1;
+}
+
+.photo-profil img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Diapo Canva */
+.diapo-section {
+  text-align: center;
+  padding-top: 30px;
+}
+
+.canva-embed-container {
+  position: relative;
+  padding-bottom: 56.25%;
+  height: 0;
+  overflow: hidden;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+  margin: 20px auto;
+}
+
+.canva-embed-container iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* Footer wave */
+.wave-footer {
+  height: 30px;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" fill="%232A5C82"/><path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" fill="%232A5C82"/><path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" fill="%232A5C82"/></svg>');
+  background-size: cover;
+  opacity: 0;
+  animation: fadeIn 1s forwards 1.2s;
+}
+
+@keyframes fadeIn {
+  to { opacity: 1; }
+}
+
+/* Liens */
+.custom-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.custom-link:hover {
+  color: #ff6600;
+}
+
+/* Bouton retour en haut */
+.back-to-top {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  width: 46px;
+  height: 46px;
+  border: none;
+  border-radius: 999px;
+  background: var(--primary-color);
+  color: #fff;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.18);
+  opacity: 0;
+  transform: translateY(10px);
+  pointer-events: none;
+  transition: opacity 0.25s ease, transform 0.25s ease;
+  z-index: 999;
+}
+
+.back-to-top.show {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.back-to-top:focus-visible {
+  outline: 3px solid rgba(78, 205, 196, 0.7);
+  outline-offset: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  body { padding: 12px; }
+
+  .header { padding: 20px; }
+
+  .header h1 { font-size: 1.8rem; }
+  .header h2 { font-size: 1.1rem; }
+
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .section,
+  .sectioninteret {
+    padding: 20px;
+  }
+
+  .timeline-item {
+    flex-direction: column;
+    padding-left: 15px;
+  }
+
+  .timeline-date {
+    min-width: unset;
+    margin-bottom: 6px;
+  }
+}
+
+  </style>
+
+</head>
+
+<body>
+  <div class="cv-container">
+    <header class="header">
+      <h1 class="animate__animated animate__fadeInDown">MOHAMED ALI KHALDI</h1>
+
+      <div class="photo-profil animate__animated animate__fadeInDown">
+        <img src="photo1.png" alt="Photo de Mohamed Ali Khaldi">
+      </div>
+
+      <h2 class="animate__animated animate__fadeInDown animate__delay-1s">Alternant en Marketing Digital & Performance Commerciale</h2>
+
+      <div class="contact-info">
+        <div class="contact-item animate__animated animate__fadeIn animate__delay-1s">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Marseille / Aubagne</span>
+        </div>
+        <div class="contact-item animate__animated animate__fadeIn animate__delay-1s">
+          <i class="fas fa-phone"></i>
+          <span>06 35 56 23 34</span>
+        </div>
+        <div class="contact-item animate__animated animate__fadeIn animate__delay-1s">
+          <i class="fas fa-envelope"></i>
+          <span>khaldimohamedali2@gmail.com</span>
+        </div>
+        <div class="contact-item animate__animated animate__fadeIn animate__delay-1s">
+          <i class="fab fa-linkedin"></i>
+          <span>
+            <a href="https://www.linkedin.com/in/mohamed-ali-khaldi-gioxxane/" target="_blank" rel="noopener noreferrer" class="custom-link">
+              Mon profil LinkedIn
+            </a>
+          </span>
+        </div>
+      </div>
+    </header>
+
+    <section class="section">
+      <h2 class="section-title">
+        <i class="fas fa-user"></i>
+        <span>Profil</span>
+      </h2>
+      <p>
+        Actuellement en fin de Bachelor Marketing Digital (Bac+3), je poursuis mes études en Master Marketing Digital et Performance Commerciale en alternance (2 ans). Fort de mon expérience en tant que Chargé d’Acquisition chez ICM Wellness (Keepcool, Neoness, Metabolik), je développe des compétences en analyse de données, acquisition digitale et performance marketing, et souhaite les mettre au service d’une entreprise ambitieuse.
+      </p>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        <i class="fas fa-graduation-cap"></i>
+        <span>Formation</span>
+      </h2>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2025</div>
+        <div class="timeline-content">
+          <h3>Bachelor Marketing Digital & Performance Commerciale</h3>
+          <h4>La Forbine - Aubagne</h4>
+          <ul>
+            <li>Spécialisation en analyse de données et campagnes digitales</li>
+            <li>Gestion de projet marketing</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022 - 2023</div>
+        <div class="timeline-content">
+          <h3>Développeur Web & Mobile</h3>
+          <h4>SIMPLON - Marseille</h4>
+          <ul>
+            <li>HTML5, CSS3, JavaScript, Python</li>
+            <li>Création de sites e-commerce</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2021 - 2022</div>
+        <div class="timeline-content">
+          <h3>IUT Techniques de Commercialisation</h3>
+          <h4>IUT Saint-Jérôme - Marseille</h4>
+          <ul>
+            <li>Sens de la communication, Esprit commercial, Organisation et gestion du temps</li>
+            <li>Travail en équipe, Autonomie et initiative, Adaptabilité</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        <i class="fas fa-briefcase"></i>
+        <span>Expérience Professionnelle</span>
+      </h2>
+
+      <!-- AJOUT ICM WELLNESS -->
+      <div class="timeline-item">
+        <div class="timeline-date">09/2025 - Présent</div>
+        <div class="timeline-content">
+          <h3>Chargé d’Acquisition (Alternance)</h3>
+          <h4>ICM Wellness (Keepcool, Neoness, Metabolik) – Aix-en-Provence</h4>
+          <ul>
+            <li>Pilotage et optimisation de campagnes Paid Media (Meta Ads, Google Ads, Snapchat Ads, TikTok Ads) sur un réseau de +300 clubs</li>
+            <li>Analyse avancée des performances (CPL, CPA, ROAS, taux de conversion) et recommandations stratégiques d’optimisation</li>
+            <li>Exploitation et analyse de données via Google Sheets (formules avancées, TCD, reporting N vs N-1, catégorisation campagnes…)</li>
+            <li>Coordination avec agences partenaires (Ads’Up) et équipes internes (Data, Créa, Franchise)</li>
+            <li>Collaboration à la production créative (briefs, déclinaisons statiques & vidéos, adaptation aux objectifs de performance)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2024</div>
+        <div class="timeline-content">
+          <h3>Chef de rayon Fruits et Légumes</h3>
+          <h4>Cedisprim - Aubagne</h4>
+          <ul>
+            <li>Gestion des stocks et des approvisionnements</li>
+            <li>Mise en place du merchandising (produits bien présentés et attractifs)</li>
+            <li>Suivi des indicateurs de performance (CA, marge, démarque…)</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2023</div>
+        <div class="timeline-content">
+          <h3>Stage - Création d'un site internet</h3>
+          <h4>YOUNG - Marseille</h4>
+          <ul>
+            <li>Conception d'interface utilisateur (HTML/CSS)</li>
+            <li>Optimisation SEO basique</li>
+            <li>Collaboration avec l'équipe marketing</li>
+            <li>Autonomie, Gestion du temps, Esprit logique et analytique</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-date">2022</div>
+        <div class="timeline-content">
+          <h3>Chef d'équipe Agent de Sécurité</h3>
+          <h4>SYGMA SECURITE - Marseille</h4>
+          <ul>
+            <li>Leadership, Communication claire et efficace, Rigueur et vigilance</li>
+            <li>Capacité à résoudre les conflits, Esprit d’analyse, Sens de l’organisation</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section diapo-section" id="diapo">
+      <h2 class="section-title"><i class="fas fa-desktop"></i> Soutenance de diplôme</h2>
+      <p>Voici le diaporama que j'ai présenté pour obtenir mon diplôme de développeur web et web mobile :</p>
+
+      <div class="canva-embed-container">
+        <iframe loading="lazy"
+          src="https://www.canva.com/design/DAFAR6c6XcQ/snM5j4fRLBhFXbVyi_7-LA/view?embed"
+          allowfullscreen="allowfullscreen"
+          allow="fullscreen"
+          frameborder="0">
+        </iframe>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2 class="section-title">
+        <i class="fas fa-code"></i>
+        <span>Compétences</span>
+      </h2>
+
+      <h3>Marketing Digital</h3>
+      <div class="skills-container">
+        <div class="skill-badge primary">Réseaux sociaux</div>
+        <div class="skill-badge primary">Autonomie et gestion des priorités</div>
+        <div class="skill-badge primary">Analyse et interprétation des KPI</div>
+        <div class="skill-badge primary">Stratégie d’acquisition digitale</div>
+        <div class="skill-badge primary">Création de sites dynamiques</div>
+        <div class="skill-badge primary">Reporting et synthèse décisionnelle</div>
+        <div class="skill-badge primary">Gestion de projet web et marketing</div>
+        <div class="skill-badge primary">Coordination d’équipes transverses</div>
+      </div>
+
+      <h3 style="margin-top: 20px;">Développement Web</h3>
+      <div class="skills-container">
+        <div class="skill-badge">HTML/CSS</div>
+        <div class="skill-badge">JavaScript</div>
+        <div class="skill-badge">Python</div>
+        <div class="skill-badge">UX/UI basics</div>
+      </div>
+
+      <h3 style="margin-top: 20px;">Soft Skills</h3>
+      <div class="skills-container">
+        <div class="skill-badge primary">Adaptabilité</div>
+        <div class="skill-badge primary">Esprit d'équipe</div>
+        <div class="skill-badge primary">Créativité</div>
+        <div class="skill-badge primary">Sens analytique</div>
+      </div>
+
+      <h3 style="margin-top: 20px;">Langue</h3>
+      <div class="skills-container">
+        <div class="skill-badge">Francais</div>
+        <div class="skill-badge">Italien</div>
+        <div class="skill-badge">Anglais</div>
+        <div class="skill-badge">Espagnole</div>
+        <div class="skill-badge">Arabe</div>
+      </div>
+    </section>
+
+    <section class="sectioninteret" style="border-bottom: none;">
+      <h2 class="section-title">
+        <i class="fas fa-heart"></i>
+        <span>Centres d'intérêt</span>
+      </h2>
+      <div class="interests-container">
+        <div class="interest-item">
+          <div class="interest-icon">
+            <i class="fas fa-chart-line"></i>
+          </div>
+          <span class="interest-name">Veille marketing</span>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <i class="fas fa-basketball-ball"></i>
+          </div>
+          <span class="interest-name">Sports</span>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <i class="fas fa-plane"></i>
+          </div>
+          <span class="interest-name">Voyages</span>
+        </div>
+        <div class="interest-item">
+          <div class="interest-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <span class="interest-name">Tech</span>
+        </div>
+      </div>
+    </section>
+
+    <div class="wave-footer"></div>
+  </div>
+
+  <!-- Bouton retour en haut -->
+  <button id="backToTop" class="back-to-top" aria-label="Retour en haut">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Reveal sections on scroll
+  const revealTargets = document.querySelectorAll('.section, .sectioninteret');
+
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.12 }
+  );
+
+  revealTargets.forEach((el) => observer.observe(el));
+
+  // Back to top button
+  const backToTopBtn = document.getElementById('backToTop');
+  if (!backToTopBtn) return;
+
+  const toggleBackToTop = () => {
+    if (window.scrollY > 180) backToTopBtn.classList.add('show');
+    else backToTopBtn.classList.remove('show');
+  };
+
+  window.addEventListener('scroll', toggleBackToTop, { passive: true });
+  toggleBackToTop();
+
+  backToTopBtn.addEventListener('click', () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+});
+
+  </script>
+
+</body>
+</html>
