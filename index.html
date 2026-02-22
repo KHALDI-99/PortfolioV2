@@ -498,6 +498,63 @@ body {
   }
 }
 
+    /* ===== Formation (premium) ===== */
+.timeline-item {
+  border-radius: 12px;
+  padding: 10px 12px;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+
+.timeline-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+  background: rgba(78, 205, 196, 0.08);
+}
+
+.timeline-content h3 {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Badge "En cours" / "À venir" */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+  border: 1px solid rgba(0,0,0,0.08);
+}
+
+.badge.badge-progress {
+  background: rgba(255, 107, 53, 0.12);
+  color: #FF6B35;
+  border-color: rgba(255, 107, 53, 0.25);
+}
+
+.badge.badge-upcoming {
+  background: rgba(42, 92, 130, 0.12);
+  color: #2A5C82;
+  border-color: rgba(42, 92, 130, 0.25);
+}
+
+/* Mise en avant formation principale (optionnel via classe) */
+.timeline-item.highlight {
+  background: rgba(42, 92, 130, 0.06);
+  border: 1px solid rgba(42, 92, 130, 0.12);
+}
+
+@media (max-width: 768px) {
+  .timeline-item {
+    padding: 10px;
+  }
+}
+
   </style>
 
 </head>
@@ -554,10 +611,22 @@ body {
       </h2>
 
       <div class="timeline-item">
+  <div class="timeline-date">2026 - 2028</div>
+  <div class="timeline-content">
+    <h3>Master en Marketing Digital</h3>
+    <h4>Digital College</h4>
+    <ul>
+      <li>Définition et pilotage de la stratégie d’acquisition digitale multi-canaux</li>
+      <li>Déploiement et optimisation de tunnels de conversion</li>
+    </ul>
+  </div>
+</div>
+
+      <div class="timeline-item">
         <div class="timeline-date">2025</div>
         <div class="timeline-content">
           <h3>Bachelor Marketing Digital & Performance Commerciale</h3>
-          <h4>La Forbine - Aubagne</h4>
+          <h4>Digital College - Marseille</h4>
           <ul>
             <li>Spécialisation en analyse de données et campagnes digitales</li>
             <li>Gestion de projet marketing</li>
@@ -786,6 +855,59 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   });
 });
+
+      // ===== Badges automatiques Formation (En cours / À venir) =====
+  // Règle simple :
+  // - Si l'année de fin est >= année actuelle => "En cours"
+  // - Si l'année de début est > année actuelle => "À venir"
+  // - Sinon pas de badge
+
+  const currentYear = new Date().getFullYear();
+  const formationSection = Array.from(document.querySelectorAll('.section'))
+    .find(sec => sec.textContent.toLowerCase().includes('formation'));
+
+  if (formationSection) {
+    const items = formationSection.querySelectorAll('.timeline-item');
+
+    items.forEach((item) => {
+      const dateEl = item.querySelector('.timeline-date');
+      const titleEl = item.querySelector('.timeline-content h3');
+      if (!dateEl || !titleEl) return;
+
+      const raw = dateEl.textContent.trim();
+
+      // Ex: "2026 - 2028" ou "2025" ou "2022 - 2023"
+      const years = raw.match(/\d{4}/g);
+      if (!years || years.length === 0) return;
+
+      const startYear = parseInt(years[0], 10);
+      const endYear = years.length >= 2 ? parseInt(years[1], 10) : startYear;
+
+      // Retire un badge existant si on relance le script
+      const existing = titleEl.querySelector('.badge');
+      if (existing) existing.remove();
+
+      let badge = null;
+
+      if (startYear > currentYear) {
+        badge = document.createElement('span');
+        badge.className = 'badge badge-upcoming';
+        badge.textContent = 'À venir';
+      } else if (endYear >= currentYear && startYear <= currentYear) {
+        badge = document.createElement('span');
+        badge.className = 'badge badge-progress';
+        badge.textContent = 'En cours';
+      }
+
+      if (badge) titleEl.appendChild(badge);
+
+      // Optionnel : highlight automatique pour le Master (si 2026-2028)
+      // Tu peux enlever ce bloc si tu ne veux pas.
+      if (raw.includes('2026') && raw.includes('2028')) {
+        item.classList.add('highlight');
+      }
+    });
+  }
 
   </script>
 
